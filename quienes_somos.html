@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Maps</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('images/fotos/background2.png');
+            background-size: cover;
+            background-position: center;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto; 
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 20px; 
+            flex-wrap: wrap; 
+            justify-content: center;
+        }
+
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: rgba(0, 255, 127, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .profile-circle {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ccc;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 50px; 
+            left: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            z-index: 10; 
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #ddd;
+        }
+
+        .about-section {
+            display: flex;
+            justify-content: space-between; 
+            align-items: flex-start;
+            width: 90%;
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+            flex-wrap: wrap; 
+        }
+
+        .vision, .mission {
+            width: 45%; 
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: slideIn 1s ease;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .mission h2, .vision h2 {
+            font-size: 28px;
+            color: black;
+            margin-bottom: 15px;
+            animation: bounce 2s infinite;
+        }
+
+        .mission p, .vision p {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .mission img, .vision img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .search-cart {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-bar {
+            padding: 5px 10px;
+            border-radius: 15px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .cart-icon {
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+
+
+        @media (max-width: 768px) {
+            .about-section {
+                flex-direction: column; 
+                align-items: center; 
+            }
+
+            .vision, .mission {
+                width: 90%;
+                margin: 10px 0; 
+            }
+
+            .navbar {
+                flex-direction: column; 
+                align-items: center;
+                gap: 10px; 
+            }
+
+            .search-cart {
+                flex-direction: column; 
+                position: static; 
+                margin-top: 10px; 
+            }
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "none" || menu.style.display === "" ? "block" : "none";
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="navbar">
+            <a href="inicio.html" class="active">Inicio</a>
+            <a href="quienes_somos.html">Quienes Somos</a>
+            <a href="contactanos.html">Contáctanos</a>
+        </div>
+    </div>
+
+    <div class="profile-circle" onclick="toggleMenu()">⚙️</div>
+    <div class="dropdown-menu" id="dropdownMenu">
+        <a href="index.html">Salir</a>
+    </div>
+
+    <div class="search-cart">
+        <input type="text" class="search-bar" placeholder="Buscar...">
+        <span class="cart-icon" onclick="location.href='lista.html'">🛒</span>
+    </div>
+
+    <div class="about-section">
+        <div class="vision">
+            <h2>VISIÓN</h2>
+            <p>Para el año 2029, World Maps se habrá consolidado como una de las plataformas líderes en la visibilización, conexión y crecimiento de las pequeñas empresas en Madrid y Cundinamarca. Aspiramos a expandir nuestra presencia a nivel nacional, manteniendo siempre nuestros valores y compromisos con la innovación, y el apoyo a las pequeñas empresas buscando la excelencia en el servicio y el crecimiento sostenible de nuestros clientes.</p>
+            <img src="images/fotos/vision.png" alt="Visión Imagen">
+        </div>
+        <div class="mission">
+            <h2>MISIÓN</h2>
+            <p>En World Maps nos comprometemos a impulsar el crecimiento y desarrollo de las pequeñas empresas en el sector de Madrid y Cundinamarca, brindando una plataforma integral que les permita aumentar su visibilidad, y conectarse con sus clientes para mejorar su alcance en el mercado y aumentar la economía en el municipio.</p>
+            <img src="images/fotos/mision.png" alt="Misión Imagen">
+        </div>
+    </div>
+</body>
+</html>

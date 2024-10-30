@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Maps</title>
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('images/fotos/background2.png');
+            background-size: cover;
+            background-position: center;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: rgba(0, 255, 127, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .profile-circle {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ccc;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 20px; 
+            left: 70px; 
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #ddd;
+        }
+
+
+        .left-panel {
+            position: absolute;
+            top: 80px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+            animation: slideIn 1s ease;
+        }
+
+        .future-text-box {
+            width: 400px;
+            height: 350px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            animation: fadeIn 2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: black;
+            font-weight: bold;
+            text-align: center;
+        }
+
+
+        .welcome {
+            margin-top: 200px;
+            text-align: center;
+            animation: fadeIn 5s ease;
+        }
+
+        .welcome h1 {
+            font-size: 50px; 
+            margin: 0;
+            color: black;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        .welcome img {
+            margin-top: 10px;
+            width: 120px;
+            animation: fadeIn 2s ease;
+        }
+
+        .search-cart {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-bar {
+            padding: 5px 10px;
+            border-radius: 15px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        .cart-icon {
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+
+
+        .map-container {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-button {
+            background-color: rgba(255, 218, 121, 0.9);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            animation: fadeInUp 1s ease;
+        }
+
+        .search-button:hover {
+            background-color: rgba(255, 218, 121, 1);
+            transform: translateY(-2px);
+        }
+
+        .map {
+            width: 400px;
+            height: 250px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+    </style>
+    <script>
+
+        function toggleMenu() {
+            var menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "none" || menu.style.display === "" ? "block" : "none";
+        }
+    </script>
+</head>
+<body>
+
+
+    <div class="header">
+        <div class="navbar">
+            <a href="inicio.html" class="active">Inicio</a>
+            <a href="quienes_somos.html">Quienes Somos</a>
+            <a href="contactanos.html">Contáctanos</a>
+        </div>
+    </div>
+
+
+    <div class="profile-circle" onclick="toggleMenu()">
+        ⚙️
+    </div>
+    <div class="dropdown-menu" id="dropdownMenu">
+        <a href="index.html">Salir</a>
+    </div>
+
+
+    <div class="search-cart">
+        <input type="text" class="search-bar" placeholder="Search...">
+        <span class="cart-icon" onclick="location.href='lista.html'">🛒</span>
+    </div>
+
+
+    <div class="left-panel">
+        <span>TOP EMPRESAS</span>
+        <div class="future-text-box">Aquí puedes añadir texto en el futuro.</div>
+    </div>
+
+
+    <div class="welcome">
+        <h1>Bienvenidos a</h1>
+        <img src="images/fotos/logo.png" alt="Logo">
+    </div>
+
+
+    <div class="map-container">
+        <button class="search-button" onclick="location.href='busquedas.html'">Búsquedas Recientes</button>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31809.693083143036!2d-74.28591868288859!3d4.733264094201149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f7835577df787%3A0xfe4076aa4af1d48!2sMadrid%2C%20Cundinamarca!5e0!3m2!1ses!2sco!4v1730252395844!5m2!1ses!2sco" 
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
+</body>
+</html>

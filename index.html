@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Maps</title>
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('images/fotos/background.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 30px;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 30px; 
+        }
+
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+            padding: 5px 10px; 
+            transition: color 0.3s ease;
+        }
+
+
+        .navbar a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+
+        .navbar a.active {
+            color: white;
+        }
+
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 120px; 
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .logo img {
+            width: 400px; 
+            height: auto;
+            margin-top: 10px;
+        }
+
+        .start-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: rgba(0, 255, 127, 0.7); 
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .start-button:hover {
+            background-color: rgba(0, 255, 127, 0.9);
+            transform: scale(1.05);
+        }
+
+
+        .login-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            color: white;
+        }
+
+        .login-popup h2 {
+            margin: 0 0 20px;
+        }
+
+        .login-popup button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: rgba(0, 128, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-popup button:hover {
+            background-color: rgba(0, 128, 0, 0.9);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px; 
+                align-items: center; 
+            }
+
+            .main-content {
+                margin-top: 140px; 
+            }
+
+            .logo img {
+                width: 250px; 
+            }
+
+            .start-button {
+                width: 100%; 
+                padding: 12px; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="header">
+        <div class="navbar">
+            <a href="index.html" class="active">Inicio</a>
+            <a href="quienes_somos.html">Quienes Somos</a>
+            <a href="contacto.html">Contáctanos</a>
+        </div>
+    </div>
+
+
+    <div class="main-content">
+        <div class="logo">
+            Bienvenidos a
+            <img src="images/fotos/logo.png" alt="Logo del Proyecto">
+        </div>
+        <button class="start-button" onclick="showLogin()">Empezar</button>
+    </div>
+
+
+    <div class="login-popup" id="loginPopup">
+        <span class="close-btn" onclick="hideLogin()">✖</span>
+        <h2>Abrir World Maps</h2>
+        <button onclick="window.location.href='inicio.html'">Iniciar</button>
+    </div>
+
+
+    <script>
+        function showLogin() {
+            document.getElementById("loginPopup").style.display = "block";
+        }
+
+        function hideLogin() {
+            document.getElementById("loginPopup").style.display = "none";
+        }
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const navbarLinks = document.querySelectorAll(".navbar a");
+            navbarLinks.forEach(link => {
+                if (link.href === window.location.href) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
