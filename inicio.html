@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Maps</title>
     <style>
-
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -16,10 +15,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            overflow-y: auto; /* Permitir desplazamiento vertical */
+            min-height: 100vh; /* Asegurar que el cuerpo tenga al menos el alto de la pantalla */
         }
-
 
         .header {
             width: 100%;
@@ -65,7 +63,6 @@
             justify-content: center;
         }
 
-
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -88,7 +85,6 @@
         .dropdown-menu a:hover {
             background-color: #ddd;
         }
-
 
         .left-panel {
             position: absolute;
@@ -121,7 +117,6 @@
             font-weight: bold;
             text-align: center;
         }
-
 
         .welcome {
             margin-top: 200px;
@@ -169,7 +164,6 @@
             transform: scale(1.1);
         }
 
-
         .map-container {
             position: absolute;
             bottom: 20px;
@@ -206,9 +200,46 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             overflow: hidden;
         }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                overflow-y: scroll; /* Permitir desplazamiento en dispositivos móviles */
+            }
+
+            .welcome {
+                margin-top: 50px;
+            }
+
+            .left-panel {
+                position: static; /* Cambiar a posición estática */
+                margin: 20px; /* Espaciado en móviles */
+            }
+
+            .map-container {
+                position: static; /* Cambiar a posición estática */
+                margin: 20px; /* Espaciado en móviles */
+                align-items: center; /* Centrar contenido en móviles */
+            }
+
+            .search-cart {
+                position: static; /* Cambiar a posición estática */
+                margin: 20px; /* Espaciado en móviles */
+                flex-direction: column; /* Colocar verticalmente */
+            }
+
+            .navbar {
+                flex-direction: column; /* Colocar verticalmente en móviles */
+                gap: 10px; /* Espaciado vertical entre enlaces */
+            }
+
+            .map {
+                width: 100%; /* Ancho completo en móviles */
+                height: 200px; /* Ajustar altura */
+            }
+        }
     </style>
     <script>
-
         function toggleMenu() {
             var menu = document.getElementById("dropdownMenu");
             menu.style.display = menu.style.display === "none" || menu.style.display === "" ? "block" : "none";
@@ -216,8 +247,6 @@
     </script>
 </head>
 <body>
-
-
     <div class="header">
         <div class="navbar">
             <a href="inicio.html" class="active">Inicio</a>
@@ -226,7 +255,6 @@
         </div>
     </div>
 
-
     <div class="profile-circle" onclick="toggleMenu()">
         ⚙️
     </div>
@@ -234,32 +262,27 @@
         <a href="index.html">Salir</a>
     </div>
 
-
     <div class="search-cart">
         <input type="text" class="search-bar" placeholder="Search...">
         <span class="cart-icon" onclick="location.href='lista.html'">🛒</span>
     </div>
-
-
-    <div class="left-panel">
-        <span>TOP EMPRESAS</span>
-        <div class="future-text-box">Aquí puedes añadir texto en el futuro.</div>
-    </div>
-
 
     <div class="welcome">
         <h1>Bienvenidos a</h1>
         <img src="images/fotos/logo.png" alt="Logo">
     </div>
 
+    <div class="left-panel">
+        <span>TOP EMPRESAS</span>
+        <div class="future-text-box">Aquí puedes añadir texto en el futuro.</div>
+    </div>
 
     <div class="map-container">
         <button class="search-button" onclick="location.href='busquedas.html'">Búsquedas Recientes</button>
         <div class="map">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31809.693083143036!2d-74.28591868288859!3d4.733264094201149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f7835577df787%3A0xfe4076aa4af1d48!2sMadrid%2C%20Cundinamarca!5e0!3m2!1ses!2sco!4v1730252395844!5m2!1ses!2sco" 
-                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
-
 </body>
 </html>
